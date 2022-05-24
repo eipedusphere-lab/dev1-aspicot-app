@@ -6,7 +6,7 @@ metadata:
   labels:
     app: dev1-aspicot
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: dev1-aspicot
@@ -43,14 +43,14 @@ metadata:
 
 spec:
   rules:
-    - host: kubernetes.edusphere.fr
+    - host: aspicot.kubernetes.edusphere.fr
       http:
         paths:
-          - path: /aspicot
+          - path: /
             pathType: Exact
             backend:
               service:
-                name: dev1-aspicot
+                name: dev1-aspicot-service
                 port:
                   number: 80
 
