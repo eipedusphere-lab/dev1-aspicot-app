@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dev1-aspicot
+  namespace: dev1-ns
+  labels:
+    app: dev1-aspicot
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dev1-aspicot
+  template:
+    metadata:
+      labels:
+        app: dev1-aspicot
+    spec:
+      containers:
+      - name: dev1-aspicot
+        image: thegaragebandofit/dev1-aspicot:1.0
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: dev1-aspicot-service
+  namespace: dev1-ns
+spec:
+  selector:
+    app: dev1-aspicot
+  ports:
+  - name: http
+    protocol: TCP
+    port: 80
+    targetPort: 80
+  type: LoadBalancer
