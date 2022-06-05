@@ -42,6 +42,9 @@ metadata:
   namespace: dev1-ns
 
 spec:
+  tls:
+    - hosts:
+      - aspicot.kubernetes.edusphere.fr
   rules:
     - host: aspicot.kubernetes.edusphere.fr
       http:
